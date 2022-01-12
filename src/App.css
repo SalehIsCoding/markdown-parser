@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background: #2C3E50;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input-wrapper{
+  width: 40%;
+  margin: 15vh 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 15px;
+  padding-bottom: 3vh;
+  animation-name: shadow_dance;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  box-shadow: 0px 3px 23px 5px rgba(0,0,0,0.68);
 }
 
-.App-link {
-  color: #61dafb;
+h4{
+  align-self: center;
+  font-size: 30px;
+  margin: 2vh 0;
+  animation-name: letter_dance,color_dance;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  color: #E74C3C;
+}
+.textarea{
+  margin: 1vh 2vw;
+  background: transparent;
+  border-radius: 15px;
+  padding: 1vh 0;
+  height: 50vh;
+  border-color: #E74C3C;
+  animation-name: color_dance;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  text-align: center;
+  resize: none;
+  font-size: 25px;
+}
+textarea:focus{
+  outline: none;
+  box-shadow: 0px 3px 23px 5px rgba(0,0,0,0.38);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#preview{
+  font-size: 15px;
+  font-family: monospace;
+}
+
+@keyframes letter_dance {
+  25%{
+    letter-spacing: 2px;
   }
-  to {
-    transform: rotate(360deg);
+  50%{
+    letter-spacing: 5px;
   }
+  75%{
+    letter-spacing: 10px;
+  }
+  100%{
+    letter-spacing: normal;
+  }
+}
+
+@keyframes color_dance {
+  25%{
+    color: #3498DB;
+    border-color: rgb(52, 152, 219);
+  }
+  50%{
+    color: #9B59B6;
+    border-color: rgb(155, 89, 182);
+  }
+  75%{
+    color: #1ABC9C;
+    border-color: rgb(26, 188, 156);
+  }
+  100%{
+    color: #F1C40F;
+    border-color: rgb(241, 196, 15);
+  }
+}
+
+
+@media screen and (max-width: 1000px){
+    .App{
+      flex-direction: column;
+    }
+    .input-wrapper{
+      width: 80%;
+      margin: 1vh 0;
+    }
+    .textarea{
+      height: 50vh;
+      margin: 1vh 4vw;
+    }
+    textarea,h4,.input-wrapper{
+      color: #7F8C8D;
+      border-color: #7F8C8D;
+      animation-name: none;
+    }
 }

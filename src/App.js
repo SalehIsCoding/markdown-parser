@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import {marked} from 'marked';
 
 function App() {
+  let [texts, settext] = useState('');
+  
+  let changeText = (e) =>{
+    let rawMarkup = marked.parse(e.target.value);
+    settext(rawMarkup);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="input-wrapper">
+        <h4>Input Box</h4>
+        <textarea id="editor" className='textarea' onChange={changeText}></textarea>
+      </div>
+      <div className="input-wrapper">
+        <h4>Preview Box</h4>
+        <div id="preview" className='textarea' dangerouslySetInnerHTML={{
+                  __html: marked(texts),
+                }}></div>
+      </div>
     </div>
   );
 }
